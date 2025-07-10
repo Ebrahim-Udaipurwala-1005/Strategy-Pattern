@@ -13,14 +13,15 @@ public class BinarySearch implements SearchStrategy {
             while (left <= right) {
                 int middle = left + Math.floorDiv(right - left, 2);
                 Chapter chapter = book.get(middle);
-                int comparison = name.compareTo(chapter.getName());
-
+                int comparison = chapter.getName().compareTo(name);
                 if (comparison == 0) {
                     return chapter;
-                } else if (comparison < 0) {
-                    right = middle - 1;
-                } else {
+                }
+                else if (comparison < 0) {
                     left = middle + 1;
+                }
+                else {
+                    right = middle - 1;
                 }
             }
         }
