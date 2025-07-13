@@ -31,12 +31,16 @@ public class Context {
         for (int i = 0; i < this.book.size(); i++) {
             int comparison = book.get(i).getName().compareTo(book.get(i + 1).getName());
             if (comparison < 0) {
-                return false;
-            }
-            else if (comparison > 0) {
                 return true;
             }
+            else if (comparison > 0) {
+                return false;
+            }
         }
+        return false;
+    }
+
+    public boolean isChaptersSortedByPageNumber() {
         return false;
     }
 }
