@@ -8,36 +8,19 @@ public class InterpolationSearch implements SearchStrategy {
         if (book == null || book.isEmpty()) {
             return null;
         }
-
-        int low = 0;
-        int high = book.size() - 1;
-
-        while (low <= high
-                && pageNumber >= book.get(low).getPageNumber()
-                && pageNumber <= book.get(high).getPageNumber()) {
-
-            // Special case when all page numbers are equal
-            if (book.get(low).getPageNumber() == book.get(high).getPageNumber()) {
-                if (book.get(low).getPageNumber() == pageNumber) {
-                    return book.get(low);
-                }
-                return null;
+        int left = 0;
+        int right = book.size() - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) * (pageNumber - book.get(left).getPageNumber()) / (book.get(right).getPageNumber() - book.get(left).getPageNumber()));
+            Chapter chapter = book.get(mid);
+            if (chapter.getPageNumber() == pageNumber) {
+                return chapter;
             }
-
-            // Interpolation formula
-            int pos = low + ((pageNumber - book.get(low).getPageNumber()) * (high - low)) /
-                    (book.get(high).getPageNumber() - book.get(low).getPageNumber());
-
-            pos = Math.max(low, Math.min(pos, high)); // Ensure pos stays within bounds
-
-            Chapter current = book.get(pos);
-
-            if (current.getPageNumber() == pageNumber) {
-                return current;
-            } else if (current.getPageNumber() < pageNumber) {
-                low = pos + 1;
-            } else {
-                high = pos - 1;
+            else if (chapter.getPageNumber() < pageNumber) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
             }
         }
         return null;
