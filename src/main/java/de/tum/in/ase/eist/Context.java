@@ -45,4 +45,13 @@ public class Context {
         }
         return true;
     }
+
+    public Chapter search(String name, int pageNumber) {
+        if (searchAlgorithm == null) {
+            throw new IllegalStateException("Search algorithm not set");
+        }
+        else {
+            return searchAlgorithm.performSearch(book, name, pageNumber);
+        }
+    }
 }
