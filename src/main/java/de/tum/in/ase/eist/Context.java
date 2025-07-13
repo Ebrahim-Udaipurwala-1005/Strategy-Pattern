@@ -7,9 +7,8 @@ public class Context {
     private List<Chapter> book;
     private SearchStrategy searchAlgorithm;
 
-    public Context(SearchStrategy searchAlgorithm) {
+    public Context() {
         this.book = new ArrayList<>();
-        this.searchAlgorithm = searchAlgorithm;
     }
 
     public List<Chapter> getBook() {
