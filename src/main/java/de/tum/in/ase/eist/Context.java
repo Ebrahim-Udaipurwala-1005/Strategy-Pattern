@@ -38,6 +38,11 @@ public class Context {
     }
 
     public boolean isChaptersSortedByPageNumber() {
-        return false;
+        for (int i = 0; i < this.book.size() - 1; i++) {
+            if (book.get(i).getPageNumber() > book.get(i + 1).getPageNumber()) {
+                return false;
+            }
+        }
+        return true;
     }
 }
