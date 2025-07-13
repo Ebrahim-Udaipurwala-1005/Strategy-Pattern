@@ -28,16 +28,13 @@ public class Context {
     }
 
     public boolean isChaptersSortedByName() {
-        for (int i = 0; i < this.book.size(); i++) {
+        for (int i = 0; i < this.book.size() - 1; i++) {
             int comparison = book.get(i).getName().compareTo(book.get(i + 1).getName());
-            if (comparison < 0) {
-                return true;
-            }
-            else if (comparison > 0) {
+            if (comparison > 0) {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     public boolean isChaptersSortedByPageNumber() {
