@@ -21,11 +21,3 @@ This task focused on applying the Strategy Pattern to dynamically select the mos
 * **`SearchStrategy` Interface**: A new interface was created and implemented by all three search algorithms (`LinearSearch`, `BinarySearch`, and `InterpolationSearch`).
 * **`Context` Class**: This class holds the list of chapters and a `searchAlgorithm` object. It includes helper methods (`isChaptersSortedByName` and `isChaptersSortedByPageNumber`) to check if the chapters are sorted. The main `search` method executes the search using the currently selected strategy.
 * **`Policy` Class**: This class contains the logic to configure the `Context` with the best search algorithm. The policy selects the appropriate search method based on the sorted state of the chapter list.
-
----
-
-## Class Diagram 🗺️
-
-The UML class diagram in this repository illustrates the project's structure and the application of the Strategy Pattern.
-
-_The diagram shows how the `Client` interacts with the `Context` and `Policy` classes to select and execute the appropriate `SearchStrategy` (e.g., `LinearSearch`, `BinarySearch`, or `InterpolationSearch`) at runtime._
